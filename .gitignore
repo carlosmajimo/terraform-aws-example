@@ -2,4 +2,5 @@
 *.tfstate
 *.hcl
 *.backup
+*.info
 .terraform/

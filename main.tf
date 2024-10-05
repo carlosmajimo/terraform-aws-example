@@ -26,4 +26,5 @@ module "ec2" {
   public_subnet_1_id = module.vpc.public_subnet_1_id
   public_subnet_2_id = module.vpc.public_subnet_2_id
   ami_id = var.ami_id
+  ec2_user_data = var.ec2_user_data
 }

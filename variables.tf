@@ -28,6 +28,22 @@ variable "private_subnet_2_cidr" {
   default     = "30.0.4.0/24"
 }
 
+
+variable "ec2_user_data" {
+  description = "User data command to execute"
+  default     = <<-EOF
+                  #!/bin/bash
+
+                  yum update -y
+                  yum install -y docker
+                  systemctl start docker
+                  systemctl enable docker
+                  docker run -d -p 80:80 --name my-nginx nginx
+                  echo "Script de configuración completado" >> /var/log/user-data.log
+                  echo "Docker instalado y contenedor Nginx ejecutándose en el puerto 80"
+                EOF
+}
+
 variable "ami_id" {
   description = "The AMI ID to use for EC2 instances"
   default     = "ami-0fff1b9a61dec8a5f"
