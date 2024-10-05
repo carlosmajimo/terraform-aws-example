@@ -45,6 +45,7 @@ resource "aws_instance" "ec2_public_1" {
   subnet_id     = var.public_subnet_1_id
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   key_name      = aws_key_pair.cloud2_key.key_name
+  associate_public_ip_address = true
 
   tags = {
     Name = "EC2 Specialization 1"
@@ -57,6 +58,7 @@ resource "aws_instance" "ec2_public_2" {
   subnet_id     = var.public_subnet_2_id
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   key_name      = aws_key_pair.cloud2_key.key_name
+  associate_public_ip_address = true
 
   tags = {
     Name = "EC2 Specialization 2"
