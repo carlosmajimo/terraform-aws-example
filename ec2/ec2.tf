@@ -54,7 +54,10 @@ resource "aws_instance" "ec2_public_1" {
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.allow_ssh_http.id]
   key_name                    = aws_key_pair.cloud2_key.key_name
-  user_data                   = var.ec2_user_data
+  user_data                   = <<-EOF
+                                ${var.ec2_user_data}
+                                echo '<html><body><h1>Esta es la EC2 1</h1></body></html>' | docker exec -i my-nginx tee /usr/share/nginx/html/index.html
+                                EOF
 
   tags = {
     Name = "EC2 Specialization 1"
@@ -68,7 +71,10 @@ resource "aws_instance" "ec2_public_2" {
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.allow_ssh_http.id]
   key_name                    = aws_key_pair.cloud2_key.key_name
-  user_data                   = var.ec2_user_data
+  user_data                   = <<-EOF
+                                ${var.ec2_user_data}
+                                echo '<html><body><h1>Esta es la EC2 2</h1></body></html>' | docker exec -i my-nginx tee /usr/share/nginx/html/index.html
+                                EOF
 
   tags = {
     Name = "EC2 Specialization 2"

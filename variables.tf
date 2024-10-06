@@ -39,8 +39,6 @@ variable "ec2_user_data" {
                   systemctl start docker
                   systemctl enable docker
                   docker run -d -p 80:80 --name my-nginx nginx
-                  echo "Script de configuración completado" >> /var/log/user-data.log
-                  echo "Docker instalado y contenedor Nginx ejecutándose en el puerto 80"
                 EOF
 }
 
