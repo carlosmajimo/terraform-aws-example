@@ -28,3 +28,11 @@ module "ec2" {
   ami_id = var.ami_id
   ec2_user_data = var.ec2_user_data
 }
+
+module "rds" {
+  source = "./rds"
+  vpc_id = module.vpc.vpc_id
+  ec2_security_group_id = module.ec2.ec2_security_group_id
+  private_subnet_1_id = module.vpc.private_subnet_1_id
+  private_subnet_2_id = module.vpc.private_subnet_2_id
+}
