@@ -3,4 +3,5 @@
 *.hcl
 *.backup
 *.info
+*.zip
 .terraform/
