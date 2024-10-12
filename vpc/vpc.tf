@@ -1,5 +1,3 @@
-# vpc/vpc.tf
-
 resource "aws_vpc" "cloud2_vpc" {
   cidr_block = var.vpc_cidr
   
@@ -15,6 +13,8 @@ resource "aws_subnet" "public_cloud2_vpc_subnet_1" {
 
   tags = {
     Name = "Public Specialization Subnet 1"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                    = "1"
   }
 }
 
@@ -25,6 +25,8 @@ resource "aws_subnet" "public_cloud2_vpc_subnet_2" {
 
   tags = {
     Name = "Public Specialization Subnet 2"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                    = "1"
   }
 }
 
@@ -35,6 +37,8 @@ resource "aws_subnet" "private_cloud2_vpc_subnet_1" {
 
   tags = {
     Name = "Private Specialization Subnet 1"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb"           = "1"
   }
 }
 
@@ -45,6 +49,8 @@ resource "aws_subnet" "private_cloud2_vpc_subnet_2" {
 
   tags = {
     Name = "Private Specialization Subnet 2"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb"           = "1"
   }
 }
 

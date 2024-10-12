@@ -3,6 +3,11 @@ variable "region" {
   default     = "us-east-1"
 }
 
+variable "cluster_name" {
+  description = "CLuster name"
+  default     = "eks-cluster"
+}
+
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"
   default     = "30.0.0.0/16"

@@ -3,6 +3,8 @@ variable "region" {
   type        = string
 }
 
+variable "cluster_name" {}
+
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"
   type        = string
