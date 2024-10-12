@@ -68,12 +68,12 @@ data "archive_file" "lambda_zip" {
 }
 
 resource "aws_lambda_function" "crud_lambda" {
-  filename         = "lambda_function.zip"
+  filename         = data.archive_file.lambda_zip.output_path
   function_name    = "crud-lambda-function"
   role             = aws_iam_role.lambda_role.arn
   handler          = "index.handler"
   runtime          = "nodejs20.x"
-  source_code_hash = filebase64sha256("lambda_function.zip")
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
 }
 
 resource "aws_apigatewayv2_api" "crud_api" {
